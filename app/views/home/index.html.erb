@@ -1,0 +1,111 @@
+
+
+<div class="row" style="margin:100px">
+
+	<%@region_json.each do |e| %>
+		
+		<div class="col-xs-12 col-md-6 col-lg-4">
+			<div class="panel panel-warning">
+				<div class="panel-heading text-center"><%=e['region']%></div>
+				<div class="panel-body" style="text-align: center">
+					<img src="<%=e['url']%>"/> <h4><%=e['degree']%>℃ </h4>
+				</div>
+
+				
+				
+				
+				
+			</div>
+
+
+									
+		</div>
+	<%end%>
+</div>
+
+<!-- <div class="container" style="margin:20px">
+	<div class="row">
+		<button onclick="myFacebookLogin()">Login with Facebook</button>
+		
+		<div class="form-group">
+		  <label for="usr">내용:</label>
+		  <input type="text" class="form-control" id="usr">
+		  <button onclick="post()">전체 공개로 올리기</button>
+		  <button onclick="selfpost()">나만 보기로 올리기</button>
+		 
+		</div>
+		
+
+		<form action = '/post' method='post'>
+	      <button type="submit" class="btn btn-default">Submit</button>
+	    </form>
+    </div>
+
+
+
+
+
+   
+
+
+
+
+
+    <div class="container">
+		<h3>서울</h3>
+		<h3> 
+			<%=@seoul_res.to_s%>
+		</h3>
+		<h3>인천</h3>
+		<h3> 
+			<%=@incheon_res.to_s%>
+		</h3>
+	</div>
+	
+
+</div> -->
+
+
+
+
+
+<script>
+	function status(){
+		FB.getLoginStatus(function(response) {
+		  
+		  if (response.status === 'connected') {
+		    var accessToken = response.authResponse.accessToken;
+		    return accessToken;
+		  }else{
+		  	return null;
+		  }
+		} );
+	}
+	// Only works after `FB.init` is called
+	function myFacebookLogin() {
+	  FB.login(function(){
+	  	status();
+	  }, {scope: 'publish_actions'});
+
+	}
+
+	function post(text){
+		FB.login(function(){
+		  FB.api('/me/feed','post', {message: document.getElementById('usr').value, value :'EVERYONE'
+});
+		}, {scope: 'publish_actions'});
+	}
+	
+	function selfpost(){
+		FB.login(function(){
+		  FB.api('/me/feed','post', {
+		  	value :'SELF',
+		  	message : document.getElementById('usr').value
+		  	 });
+		}, {scope: 'publish_actions'});
+	}
+
+ 
+	
+</script>
+
