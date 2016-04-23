@@ -10,13 +10,15 @@ class HomeController < ApplicationController
 
   	region.each do |e|
   		# "http://api.openweathermap.org/data/2.5/weather?q="+e+"&appid=4321a224e1d0872c47a3c11a67ac40ea"
-  		json_temp = JSON.parse(HTTP.get("http://api.openweathermap.org/data/2.5/weather?q="+e+"&appid=4321a224e1d0872c47a3c11a67ac40ea"))
+  		# json_temp = JSON.parse(HTTP.get("http://api.openweathermap.org/data/2.5/weather?q="+e+"&appid=4321a224e1d0872c47a3c11a67ac40ea"))
 
   		temp = {
-  			"region" => e,
-  			"degree" => (json_temp["main"]["temp"]-273).round(2),
-  			"url" =>"http://openweathermap.org/img/w/"+json_temp["weather"][0]["icon"]+".png"
+  			"region" => e
+
+  			#, "degree" => (json_temp["main"]["temp"]-273).round(2),
+  			# "url" =>"http://openweathermap.org/img/w/"+json_temp["weather"][0]["icon"]+".png"
   		}
+      puts temp
   		@region_json.push(temp)
   		
    		# @region_url.push(e)

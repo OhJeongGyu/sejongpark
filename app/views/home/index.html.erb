@@ -8,21 +8,47 @@
 			<div class="panel panel-warning">
 				<div class="panel-heading text-center"><%=e['region']%></div>
 				<div class="panel-body" style="text-align: center">
-					<img src="<%=e['url']%>"/> <h4><%=e['degree']%>℃ </h4>
+					<img id='<%=e['region']%>_img'/> <h2><div id='<%=e['region']%>_degree'></div></h2>
+					
 				</div>
-
-				
-				
-				
-				
-			</div>
-
-
-									
+			</div>					
 		</div>
 	<%end%>
 </div>
+<script>
 
+	var region = ["Seoul","Chuncheon","Gangneung","Daejeon","Cheongju","Daegu","Gwangju","Jeonju","Busan","Ulleung","Jeju"];
+
+	$(document).ready(function(){
+		for(r in region){
+			request_degree(region[r]);
+			console.log(region[r])
+
+		}
+	});
+
+	function requst_img(region, url){
+		var img_url = "http://openweathermap.org/img/w/"+url+".png"
+		$('#'+region+'_img').attr("src",img_url);
+	}
+
+    function request_degree(region){
+
+    	var url = "http://api.openweathermap.org/data/2.5/weather?q="+region+"&appid=4321a224e1d0872c47a3c11a67ac40ea";
+    	
+		// console.log('#'+region+'_degree')
+
+    	$.get(url, function(data, status){
+	        var degree = (data.main.temp-273).toFixed(2);
+	        $('#'+region+'_degree').html(degree+"℃");
+    		
+    		var url = data.weather[0].icon;
+    		requst_img(region, url);
+
+	    });
+    }
+	
+</script>
 <!-- <div class="container" style="margin:20px">
 	<div class="row">
 		<button onclick="myFacebookLogin()">Login with Facebook</button>
