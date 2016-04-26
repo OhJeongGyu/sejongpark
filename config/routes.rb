@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'fb_poster/post'
+
   # root 'home#index'
   get '/' => 'home#index'
   # resources :widgets

@@ -15,10 +15,10 @@ class HomeController < ApplicationController
   		temp = {
   			"region" => e
 
-  			#, "degree" => (json_temp["main"]["temp"]-273).round(2),
+  			#, "degree" => @seoul_res = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4321a224e1d0872c47a3c11a67ac40ea").to_s,
   			# "url" =>"http://openweathermap.org/img/w/"+json_temp["weather"][0]["icon"]+".png"
   		}
-      puts temp
+      # puts temp
   		@region_json.push(temp)
   		
    		# @region_url.push(e)
@@ -26,12 +26,20 @@ class HomeController < ApplicationController
 
  
 	@seoul_res = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4321a224e1d0872c47a3c11a67ac40ea").to_s
-	@incheon_res = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=busan&appid=4321a224e1d0872c47a3c11a67ac40ea").to_s
-	@test = "http://openweathermap.org/img/w/"+JSON.parse(HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=busan&appid=4321a224e1d0872c47a3c11a67ac40ea"))["weather"][0]["icon"]+".png"
+	# @incheon_res = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=busan&appid=4321a224e1d0872c47a3c11a67ac40ea").to_s
+	# @test = "http://openweathermap.org/img/w/"+JSON.parse(HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=busan&appid=4321a224e1d0872c47a3c11a67ac40ea"))["weather"][0]["icon"]+".png"
 	
 	# uri = URI('http://api.openweathermap.org/data/2.5/weather?q=sesoul,kr&appid=4321a224e1d0872c47a3c11a67ac40ea')
 	# uri = URI('http://api.openweathermap.org/data/2.5/weather?q=Incheon,kr&appid=4321a224e1d0872c47a3c11a67ac40ea')
-	
+
+
   end
+
+  def get_seoul_degree
+    seoul_res = JSON.parse(HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4321a224e1d0872c47a3c11a67ac40ea"))["weather"][0]
+    puts seoul_res
+    # @seoul_res = HTTP.get("http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=4321a224e1d0872c47a3c11a67ac40ea").to_s
+  end
+
 
 end

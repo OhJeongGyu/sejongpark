@@ -1,0 +1,2 @@
+module FbPosterHelper
+end
