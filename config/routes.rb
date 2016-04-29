@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
 
-  get 'fb_poster/post'
+  # get 'fb/post'
+
+  # get 'fb_poster/post'
 
   # root 'home#index'
   get '/' => 'home#index'
+  post '/fb/post'
   # resources :widgets
 
   # The priority is based upon order of creation: first created -> highest priority.

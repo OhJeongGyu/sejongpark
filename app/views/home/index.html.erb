@@ -5,14 +5,27 @@
 	<%@region_json.each do |e| %>
 		
 		<div class="col-xs-12 col-md-6 col-lg-4">
-			<div class="panel panel-warning">
-				<div class="panel-heading text-center"><%=e['region']%></div>
-				<div class="panel-body" style="text-align: center">
-					<img id='<%=e['region']%>_img'/> <h2><div id='<%=e['region']%>_degree'></div></h2>
+			
 					
-				</div>
-			</div>					
+			<form action="/fb/post" method='post'>
+				<div class="panel panel-warning">
+						
+						<div class="panel-heading text-center"><%=e['region']%></div>
+
+						<div class="panel-body" style="text-align: center">
+							<img id='<%=e['region']%>_img'/>
+							<h2><div id='<%=e['region']%>_degree'></div></h2>
+						</div>
+						<div align="center">
+							<button class="btn btn-default" type="submit" name="follow_button" value="<%=e['region']%>" style="margin:20px">Follow</button>
+						</div>
+					
+				</div>							
+			</form>
+				
+
 		</div>
+		
 	<%end%>
 </div>
 <script>
