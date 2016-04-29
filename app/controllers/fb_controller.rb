@@ -10,7 +10,8 @@ class FbController < ApplicationController
 	# puts degree
 	uri = URI('https://graph.facebook.com/471697353029596/feed')
 	message = region +'의 온도는 ' +(degree-273).round(2).to_s+'도 입니다.'
-	res = Net::HTTP.post_form(uri, 'message' => message , 'access_token' => 'EAACEdEose0cBAG6nNPc2l51ZCD01Yw8KdgzBysMBpGR6tqrmUq2wvIs6lF7ZCMiuywFWxut21qg5ZA1i10SKYoZB7tLWF7QwBArreOJoPmPD7pOljQAGZBZAOnRa8lEiA7DgJu6DBHptimGHEaLIqXzy5unpU4VuZBMwxlqu4LuFQZDZD')
+	res = Net::HTTP.post_form(uri, 'message' => message , 'access_token' => 'EAAQ06Kb0bSUBAEPKD7QTlWZBhHUlP5AGN6cyJpVXDX7VGu71y6qAtWwrrRZANC9ebRPTXdIgBg2qdvZC5ZC1VriJXhoxbKW21FU5S51joyarO3rCZChZCtJaPZC1UqJNAf2cIC9h7CpIxSVTTQZAHOfcHX3RkIT3wvdDa23ZBND9GZAIoIOHrThyuJ|hH749nuHwPgvgDNuF9I_Ua74ssQ')
+	puts res.body
 	redirect_to :back
 
   end
